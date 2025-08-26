@@ -1,22 +1,52 @@
-// Modern Salla Theme - Design System
-// ======================================
+// Modern Salla Theme - Orange Blue Design System
+// ================================================
 
 // Color System
 :root {
-  // Primary Colors
-  --color-primary: #3b82f6;
-  --color-primary-light: #60a5fa;
-  --color-primary-dark: #1d4ed8;
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  // Primary Colors - Orange Theme
+  --color-primary: #ff6b35;
+  --color-primary-light: #ff8a5c;
+  --color-primary-dark: #e55a2b;
+  --color-primary-50: #fff7f4;
+  --color-primary-100: #ffe8e0;
+  --color-primary-200: #ffd1c0;
+  --color-primary-300: #ffb399;
+  --color-primary-400: #ff8a5c;
+  --color-primary-500: #ff6b35;
+  --color-primary-600: #e55a2b;
+  --color-primary-700: #cc4a22;
+  --color-primary-800: #b33a1a;
+  --color-primary-900: #992a12;
+
+  // Secondary Colors - Blue Theme
+  --color-secondary: #0066cc;
+  --color-secondary-light: #3388dd;
+  --color-secondary-dark: #0052a3;
+  --color-secondary-50: #f0f8ff;
+  --color-secondary-100: #e0f0ff;
+  --color-secondary-200: #c1e0ff;
+  --color-secondary-300: #a3d0ff;
+  --color-secondary-400: #85c0ff;
+  --color-secondary-500: #0066cc;
+  --color-secondary-600: #0052a3;
+  --color-secondary-700: #003d7a;
+  --color-secondary-800: #002952;
+  --color-secondary-900: #001529;
+
+  // Accent Colors - Golden Yellow
+  --color-accent: #ffd700;
+  --color-accent-light: #ffe44d;
+  --color-accent-dark: #ffb300;
+  --color-accent-50: #fffef0;
+  --color-accent-100: #fffde0;
+  --color-accent-200: #fffbc0;
+  --color-accent-300: #fff9a0;
+  --color-accent-400: #fff780;
+  --color-accent-500: #ffd700;
+  --color-accent-600: #ffb300;
+  --color-accent-700: #ff9900;
+  --color-accent-800: #ff8000;
+  --color-accent-900: #ff6600;
 
   // Neutral Colors
   --color-white: #ffffff;
@@ -36,7 +66,7 @@
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
-  --color-info: #3b82f6;
+  --color-info: #0066cc;
 
   // Light Theme Colors
   --bg-primary: #ffffff;
@@ -99,29 +129,28 @@
   --spacing-24: 6rem;     /* 96px */
 
   // Border Radius
-  --radius-none: 0;
-  --radius-sm: 0.125rem;   /* 2px */
-  --radius-base: 0.25rem;  /* 4px */
-  --radius-md: 0.375rem;   /* 6px */
-  --radius-lg: 0.5rem;     /* 8px */
-  --radius-xl: 0.75rem;    /* 12px */
-  --radius-2xl: 1rem;      /* 16px */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.375rem;  /* 6px */
+  --radius-lg: 0.5rem;    /* 8px */
+  --radius-xl: 0.75rem;   /* 12px */
+  --radius-2xl: 1rem;     /* 16px */
+  --radius-3xl: 1.5rem;   /* 24px */
   --radius-full: 9999px;
 
   // Transitions
   --transition-fast: 150ms ease-in-out;
-  --transition-normal: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
 
   // Icon Sizing
   --icon-size-xs: 0.75rem;    /* 12px */
-  --icon-size-sm: 0.875rem;   /* 14px */
-  --icon-size-base: 1rem;     /* 16px */
-  --icon-size-lg: 1.125rem;   /* 18px */
-  --icon-size-xl: 1.25rem;    /* 20px */
-  --icon-size-2xl: 1.5rem;    /* 24px */
-  --icon-size-3xl: 1.875rem;  /* 30px */
-  --icon-size-4xl: 2.25rem;   /* 36px */
+  --icon-size-sm: 1rem;       /* 16px */
+  --icon-size-base: 1.25rem;  /* 20px */
+  --icon-size-lg: 1.5rem;     /* 24px */
+  --icon-size-xl: 2rem;       /* 32px */
+  --icon-size-2xl: 2.5rem;    /* 40px */
+  --icon-size-3xl: 3rem;      /* 48px */
+  --icon-size-4xl: 4rem;      /* 64px */
 
   // Z-Index
   --z-dropdown: 1000;
@@ -131,46 +160,29 @@
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
-  --z-toast: 1080;
 
   // Container
-  --container-max-width: 1280px;
   --container-padding: 1rem;
-
-  // Legacy Support
-  --main-color: var(--color-primary);
-  --infinte-color: var(--color-gray-400);
-  --main-text-color: var(--text-primary);
-  --main-text-color-dark: var(--text-secondary);
-  --color-primary-d: var(--color-primary-dark);
-  --color-primary-l: var(--color-primary-light);
-  --color-primary-reverse: var(--color-danger);
-  --color-text: var(--text-secondary);
-  --bg-gray: var(--bg-secondary);
-  --color-grey: var(--bg-tertiary);
-  --color-light-grey: var(--color-gray-200);
-  --font-sm: var(--font-size-sm);
-  --font-main: var(--font-family-sans);
-  --mm-ocd-width: calc(100% - 51px);
+  --container-max-width: 1280px;
 }
 
-// Dark Theme Colors
-[data-theme="dark"],
-.dark {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-card: #1e293b;
+// Dark Theme Variables
+[data-theme="dark"], .dark {
+  // Dark Theme Colors
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+  --bg-card: #1f2937;
   --bg-overlay: rgba(0, 0, 0, 0.7);
   
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --text-inverse: #0f172a;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --text-inverse: #111827;
   
-  --border-color: #334155;
-  --border-color-light: #475569;
-  --border-color-dark: #1e293b;
+  --border-color: #374151;
+  --border-color-light: #4b5563;
+  --border-color-dark: #6b7280;
   
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
@@ -178,35 +190,40 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
+// Icon Size Utilities
+.icon-xs { font-size: var(--icon-size-xs); }
+.icon-sm { font-size: var(--icon-size-sm); }
+.icon-base { font-size: var(--icon-size-base); }
+.icon-lg { font-size: var(--icon-size-lg); }
+.icon-xl { font-size: var(--icon-size-xl); }
+.icon-2xl { font-size: var(--icon-size-2xl); }
+.icon-3xl { font-size: var(--icon-size-3xl); }
+.icon-4xl { font-size: var(--icon-size-4xl); }
+
+// Default icon size for Salla icons
+[class*="sicon-"] {
+  font-size: var(--icon-size-base);
+}
+
 // High Contrast Mode
 @media (prefers-contrast: high) {
   :root {
-    --color-primary: #0000ff;
-    --color-primary-light: #4040ff;
-    --color-primary-dark: #0000cc;
+    --color-primary: #ff4500;
+    --color-secondary: #0066ff;
     --border-color: #000000;
     --text-primary: #000000;
     --bg-primary: #ffffff;
   }
   
-  [data-theme="dark"] {
-    --color-primary: #ffff00;
-    --color-primary-light: #ffff40;
-    --color-primary-dark: #cccc00;
-    --border-color: #ffffff;
+  [data-theme="dark"], .dark {
     --text-primary: #ffffff;
     --bg-primary: #000000;
+    --border-color: #ffffff;
   }
 }
 
 // Reduced Motion
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --transition-fast: 0ms;
-    --transition-normal: 0ms;
-    --transition-slow: 0ms;
-  }
-  
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -216,12 +233,10 @@
 
 // Print Styles
 @media print {
-  :root {
-    --bg-primary: #ffffff;
-    --text-primary: #000000;
-    --shadow-sm: none;
-    --shadow-md: none;
-    --shadow-lg: none;
-    --shadow-xl: none;
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 }

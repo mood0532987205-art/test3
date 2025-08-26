@@ -55,35 +55,54 @@ module.exports = {
                 'auto-fit-300': 'repeat(auto-fit, minmax(300px, 1fr))',
             },
             colors: {
-                // Enhanced color palette
+                // Orange-Blue Theme Colors
                 'dark': '#1D1F1F',
                 'darker': '#0E0F0F',
                 'danger': '#AE0A0A',
+                
+                // Primary Colors - Orange Theme
                 'primary': {
-                    50: '#f0f9ff',
-                    100: '#e0f2fe',
-                    200: '#bae6fd',
-                    300: '#7dd3fc',
-                    400: '#38bdf8',
-                    500: '#0ea5e9',
-                    600: '#0284c7',
-                    700: '#0369a1',
-                    800: '#075985',
-                    900: '#0c4a6e',
-                    DEFAULT: '#414042', // Using the CSS variable value
+                    50: '#fff7f4',
+                    100: '#ffe8e0',
+                    200: '#ffd1c0',
+                    300: '#ffb399',
+                    400: '#ff8a5c',
+                    500: '#ff6b35',
+                    600: '#e55a2b',
+                    700: '#cc4a22',
+                    800: '#b33a1a',
+                    900: '#992a12',
+                    DEFAULT: '#ff6b35', // Orange primary
                 },
+                
+                // Secondary Colors - Blue Theme
                 'secondary': {
-                    50: '#fdf4ff',
-                    100: '#fae8ff',
-                    200: '#f5d0fe',
-                    300: '#f0abfc',
-                    400: '#e879f9',
-                    500: '#d946ef',
-                    600: '#c026d3',
-                    700: '#a21caf',
-                    800: '#86198f',
-                    900: '#701a75',
+                    50: '#f0f8ff',
+                    100: '#e0f0ff',
+                    200: '#c1e0ff',
+                    300: '#a3d0ff',
+                    400: '#85c0ff',
+                    500: '#0066cc',
+                    600: '#0052a3',
+                    700: '#003d7a',
+                    800: '#002952',
+                    900: '#001529',
                 },
+                
+                // Accent Colors - Golden Yellow
+                'accent': {
+                    50: '#fffef0',
+                    100: '#fffde0',
+                    200: '#fffbc0',
+                    300: '#fff9a0',
+                    400: '#fff780',
+                    500: '#ffd700',
+                    600: '#ffb300',
+                    700: '#ff9900',
+                    800: '#ff8000',
+                    900: '#ff6600',
+                },
+                
                 'success': {
                     50: '#f0fdf4',
                     100: '#dcfce7',
