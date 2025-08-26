@@ -14,8 +14,17 @@ class AuroraButton extends HTMLElement {
   }
 
   connectedCallback() {
-    this.render();
-    this.attachEventListeners();
+    // Wait for Salla to be ready
+    if (typeof salla !== 'undefined') {
+      this.render();
+      this.attachEventListeners();
+    } else {
+      // Wait for Salla to load
+      document.addEventListener('DOMContentLoaded', () => {
+        this.render();
+        this.attachEventListeners();
+      });
+    }
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -44,16 +53,21 @@ class AuroraButton extends HTMLElement {
   }
 
   getDefaultText() {
+    // Ensure salla is available
+    if (typeof salla === 'undefined') {
+      return 'Add to Cart';
+    }
+
     if (this.productStatus === 'sale' && this.productType === 'booking') {
-      return salla.lang.get('pages.cart.book_now');
+      return salla.lang.get('pages.cart.book_now') || 'Book Now';
     }
     if (this.productStatus === 'sale') {
-      return salla.lang.get('pages.cart.add_to_cart');
+      return salla.lang.get('pages.cart.add_to_cart') || 'Add to Cart';
     }
     if (this.productType !== 'donating') {
-      return salla.lang.get('pages.products.out_of_stock');
+      return salla.lang.get('pages.products.out_of_stock') || 'Out of Stock';
     }
-    return salla.lang.get('pages.products.donation_exceed');
+    return salla.lang.get('pages.products.donation_exceed') || 'Donate';
   }
 
   getIcon() {
@@ -96,45 +110,122 @@ class AuroraButton extends HTMLElement {
     // Click handler for add to cart functionality
     this.button.addEventListener('click', (e) => {
       e.preventDefault();
-      this.handleAddToCart();
+      e.stopPropagation();
+
+      // Ensure we don't interfere with other click handlers
+      if (!this.isLoading && !this.hasAttribute('disabled')) {
+        this.handleAddToCart();
+      }
     });
+
+    // Listen for Salla events
+    if (typeof salla !== 'undefined') {
+      // Update button state when cart changes
+      salla.event.on('cart::updated', () => {
+        // Button can be updated here if needed
+      });
+    }
   }
 
   async handleAddToCart() {
+    console.log('Aurora Button: handleAddToCart called', {
+      productId: this.productId,
+      productStatus: this.productStatus,
+      productType: this.productType,
+      isLoading: this.isLoading,
+      disabled: this.hasAttribute('disabled')
+    });
+
     if (this.isLoading || this.hasAttribute('disabled')) {
+      console.log('Aurora Button: Button is loading or disabled');
+      return;
+    }
+
+    // Check if Salla is available
+    if (typeof salla === 'undefined') {
+      console.error('Aurora Button: Salla is not available');
+      this.showError();
       return;
     }
 
     if (this.productStatus !== 'sale') {
-      return;
+      // Handle out of stock or other statuses
+      if (this.productType !== 'donating') {
+        console.log('Aurora Button: Product not for sale');
+        if (salla.notify) {
+          salla.notify.warning(salla.lang.get('pages.products.out_of_stock') || 'Product is out of stock');
+        }
+        return;
+      }
     }
 
     try {
       this.toggleLoading(true);
-      
+      console.log('Aurora Button: Starting add to cart process');
+
       // Get the product form if it exists (for product page)
       const form = this.closest('form') || document.querySelector('.product-form');
-      
+
       if (form) {
-        // Product page - use form data
+        console.log('Aurora Button: Using form submission');
+        // Product page - validate form first
+        if (!form.reportValidity()) {
+          console.log('Aurora Button: Form validation failed');
+          this.toggleLoading(false);
+          return;
+        }
+
+        // Use Salla's built-in form submission
         const formData = new FormData(form);
         formData.append('product_id', this.productId);
-        
-        await salla.cart.addItem(formData);
+
+        // Trigger Salla's add to cart with form data
+        const result = await salla.cart.addItem(formData);
+        console.log('Aurora Button: Form submission result', result);
       } else {
+        console.log('Aurora Button: Using direct product addition');
         // Product card - simple add to cart
-        await salla.cart.addItem({
-          id: this.productId,
+        const productData = {
+          id: parseInt(this.productId),
           quantity: 1
-        });
+        };
+
+        // Handle donation products
+        if (this.productType === 'donating') {
+          const donationInput = this.closest('.s-product-card-content')?.querySelector('[name="donating_amount"]');
+          if (donationInput && donationInput.value) {
+            productData.donating_amount = parseFloat(donationInput.value);
+          }
+        }
+
+        console.log('Aurora Button: Adding product with data', productData);
+        const result = await salla.cart.addItem(productData);
+        console.log('Aurora Button: Direct addition result', result);
       }
 
       // Show success feedback
       this.showSuccess();
-      
+      console.log('Aurora Button: Successfully added to cart');
+
+      // Trigger cart update events
+      if (salla.event) {
+        salla.event.dispatch('cart::updated');
+      }
+
     } catch (error) {
-      console.error('Add to cart error:', error);
+      console.error('Aurora Button: Add to cart error', error);
       this.showError();
+
+      // Show user-friendly error message
+      if (salla.notify) {
+        if (error.response && error.response.data && error.response.data.error) {
+          salla.notify.error(error.response.data.error.message);
+        } else if (error.message) {
+          salla.notify.error(error.message);
+        } else {
+          salla.notify.error(salla.lang.get('common.messages.request_error') || 'An error occurred');
+        }
+      }
     } finally {
       this.toggleLoading(false);
     }

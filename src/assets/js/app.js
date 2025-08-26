@@ -26,7 +26,7 @@ class App extends AppHelpers {
     this.changeMenuDirection()
     initTootTip();
     this.loadModalImgOnclick();
-    this.initDarkModeToggle();
+    this.initGlowingTheme();
 
     salla.comment.event.onAdded(() => window.location.reload());
 
@@ -303,82 +303,23 @@ isElementLoaded(selector){
   }
 
   /**
-   * Initialize dark mode toggle functionality
+   * Initialize glowing black theme
    */
-  initDarkModeToggle() {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    // Apply initial theme
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      this.applyDarkMode(true);
-    } else {
-      this.applyDarkMode(false);
-    }
-
-    // Add event listener to dark mode toggle button
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    if (darkModeToggle) {
-      darkModeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark');
-        this.toggleDarkMode(!isDark);
-      });
-    }
-
-    // Listen for system theme changes
-    if (window.matchMedia) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-          this.applyDarkMode(e.matches);
-        }
-      });
-    }
-  }
-
-  /**
-   * Apply dark mode theme
-   */
-  applyDarkMode(isDark) {
+  initGlowingTheme() {
+    // Apply the single glowing black theme
     const html = document.documentElement;
     const body = document.body;
 
-    if (isDark) {
-      html.classList.add('dark');
-      body.classList.add('dark');
-      html.setAttribute('data-theme', 'dark');
-    } else {
-      html.classList.remove('dark');
-      body.classList.remove('dark');
-      html.setAttribute('data-theme', 'light');
-    }
+    html.classList.add('glow-theme');
+    body.classList.add('glow-theme');
+    html.setAttribute('data-theme', 'glow');
 
-    this.updateDarkModeIcon(isDark);
-  }
+    // Remove any existing theme classes
+    html.classList.remove('dark', 'light');
+    body.classList.remove('dark', 'light');
 
-  /**
-   * Toggle dark mode
-   */
-  toggleDarkMode(isDark) {
-    this.applyDarkMode(isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-    // Dispatch custom event for other components
-    window.dispatchEvent(new CustomEvent('themeChanged', {
-      detail: { theme: isDark ? 'dark' : 'light' }
-    }));
-  }
-
-  /**
-   * Update dark mode icon visibility
-   */
-  updateDarkModeIcon(isDark) {
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    if (!darkModeToggle) return;
-
-    const moonIcon = darkModeToggle.querySelector('.sicon-moon');
-    const sunIcon = darkModeToggle.querySelector('.sicon-sun');
+    // Clear any saved theme preferences since we only have one theme now
+    localStorage.removeItem('theme');
 
     if (isDark) {
       if (moonIcon) moonIcon.classList.add('hidden', 'dark:hidden');

@@ -387,36 +387,27 @@ document.addEventListener('DOMContentLoaded', () => {
     new ModernCardEffects();
 });
 
-// Handle theme switching with smooth transitions
-class ThemeSwitcher {
+// Enhanced glowing effects for home page
+class GlowEffects {
     constructor() {
-        this.initThemeToggle();
+        this.initGlowEffects();
     }
 
-    initThemeToggle() {
-        const themeToggle = document.querySelector('[data-theme-toggle]');
-        if (!themeToggle) return;
+    initGlowEffects() {
+        // Add enhanced glow effects to interactive elements
+        const glowElements = document.querySelectorAll('.btn, .card, .product-card');
 
-        themeToggle.addEventListener('click', () => {
-            this.toggleTheme();
+        glowElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.boxShadow = 'var(--glow-primary)';
+            });
+
+            element.addEventListener('mouseleave', () => {
+                element.style.boxShadow = '';
+            });
         });
-    }
-
-    toggleTheme() {
-        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        // Smooth transition
-        document.documentElement.style.transition = 'all 0.3s ease-in-out';
-        
-        document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', newTheme);
-        
-        setTimeout(() => {
-            document.documentElement.style.transition = '';
-        }, 300);
     }
 }
 
-// Initialize theme switcher
-new ThemeSwitcher();
+// Initialize glow effects
+new GlowEffects();

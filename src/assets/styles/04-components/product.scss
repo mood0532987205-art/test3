@@ -256,7 +256,16 @@
     &-card{
       &-full-image salla-add-product-button,
       &-full-image aurora-add-button {
-        @apply bg-white rounded;
+        background: var(--bg-gradient-card);
+        border: var(--border-glow);
+        border-radius: 0.75rem;
+        box-shadow: var(--glow-subtle);
+
+        &:hover {
+          background: var(--bg-gradient-hover);
+          border: var(--border-glow-hover);
+          box-shadow: var(--glow-secondary);
+        }
       }
     
       &-wishlist-added i {

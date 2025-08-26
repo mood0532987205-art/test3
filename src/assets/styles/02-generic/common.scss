@@ -409,19 +409,61 @@ button {
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-// Dark mode specific fixes
-.dark {
+// Glowing theme specific styles
+body {
   color-scheme: dark;
 }
 
-.dark .app-inner {
-  background-color: var(--bg-primary);
+.app-inner {
+  background: var(--bg-gradient-primary);
   color: var(--text-primary);
+  min-height: 100vh;
 }
 
 // Ensure proper theme inheritance
 * {
   border-color: var(--border-color);
+}
+
+// Enhanced glowing card styles
+.card, .product-card, .s-product-card {
+  background: var(--bg-gradient-card);
+  border: var(--border-glow);
+  box-shadow: var(--glow-subtle);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--bg-gradient-hover);
+    border: var(--border-glow-hover);
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-2px);
+  }
+}
+
+// Enhanced button styles
+.btn {
+  background: var(--bg-gradient-card);
+  border: var(--border-glow);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--bg-gradient-hover);
+    border: var(--border-glow-hover);
+    box-shadow: var(--glow-secondary);
+    color: var(--color-primary);
+  }
+
+  &.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border: 1px solid var(--color-primary);
+    box-shadow: var(--glow-primary);
+
+    &:hover {
+      box-shadow: var(--glow-intense);
+      transform: translateY(-1px);
+    }
+  }
 }
 
 // Print Styles
