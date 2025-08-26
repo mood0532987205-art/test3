@@ -1,34 +1,119 @@
+// Modern Salla Theme - Design System
+// ======================================
 
-// Colors
-$main-color: var(--color-primary);
-$infinte-color: var(--infinte-color);
-$main-text-color: var(--main-text-color);
-
+// Color System
 :root {
-  --infinte-color: #c9c9c9;
-  --main-text-color: #231f1e;
-  --main-text-color-dark: #2b2d34;
+  // Primary Colors
+  --color-primary: #3b82f6;
+  --color-primary-light: #60a5fa;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
 
-  /* current */
-  --color-primary: #5cd5c4;
-  --color-primary: #414042;
-  --color-primary-d: #272628;
-  --color-primary-l: #676668;
-  --color-primary-reverse: #ff6767;
-  --color-text: #7c8082;
-  --bg-gray: #c6c7ce1a;
-  --color-grey: #f5f7f9;
-  --color-light-grey: #eeeeee;
-  
-  /* font-size */
-  --font-sm: 0.8685714286rem;
-  /* font-family: ; */
-  --font-main: "DINNextLTArabic";
+  // Neutral Colors
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
 
-  /* plugins */
-  --mm-ocd-width: calc(100% - 51px);
+  // Semantic Colors
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+
+  // Light Theme Colors
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
   
-  /* Icon sizing */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-inverse: #ffffff;
+  
+  --border-color: #e5e7eb;
+  --border-color-light: #f3f4f6;
+  --border-color-dark: #d1d5db;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  // Typography
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  // Spacing
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;   /* 4px */
+  --spacing-2: 0.5rem;    /* 8px */
+  --spacing-3: 0.75rem;   /* 12px */
+  --spacing-4: 1rem;      /* 16px */
+  --spacing-5: 1.25rem;   /* 20px */
+  --spacing-6: 1.5rem;    /* 24px */
+  --spacing-8: 2rem;      /* 32px */
+  --spacing-10: 2.5rem;   /* 40px */
+  --spacing-12: 3rem;     /* 48px */
+  --spacing-16: 4rem;     /* 64px */
+  --spacing-20: 5rem;     /* 80px */
+  --spacing-24: 6rem;     /* 96px */
+
+  // Border Radius
+  --radius-none: 0;
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius-base: 0.25rem;  /* 4px */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-full: 9999px;
+
+  // Transitions
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  // Icon Sizing
   --icon-size-xs: 0.75rem;    /* 12px */
   --icon-size-sm: 0.875rem;   /* 14px */
   --icon-size-base: 1rem;     /* 16px */
@@ -37,48 +122,106 @@ $main-text-color: var(--main-text-color);
   --icon-size-2xl: 1.5rem;    /* 24px */
   --icon-size-3xl: 1.875rem;  /* 30px */
   --icon-size-4xl: 2.25rem;   /* 36px */
-  
-  /* Dark mode variables */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f1f3f4;
-  --text-primary: #1a1a1a;
-  --text-secondary: #5f6368;
-  --text-tertiary: #80868b;
-  --border-color: #dadce0;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  // Z-Index
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+
+  // Container
+  --container-max-width: 1280px;
+  --container-padding: 1rem;
+
+  // Legacy Support
+  --main-color: var(--color-primary);
+  --infinte-color: var(--color-gray-400);
+  --main-text-color: var(--text-primary);
+  --main-text-color-dark: var(--text-secondary);
+  --color-primary-d: var(--color-primary-dark);
+  --color-primary-l: var(--color-primary-light);
+  --color-primary-reverse: var(--color-danger);
+  --color-text: var(--text-secondary);
+  --bg-gray: var(--bg-secondary);
+  --color-grey: var(--bg-tertiary);
+  --color-light-grey: var(--color-gray-200);
+  --font-sm: var(--font-size-sm);
+  --font-main: var(--font-family-sans);
+  --mm-ocd-width: calc(100% - 51px);
 }
 
-/* Dark mode */
+// Dark Theme Colors
 [data-theme="dark"],
 .dark {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --bg-tertiary: #3c3c3c;
-  --text-primary: #ffffff;
-  --text-secondary: #e8eaed;
-  --text-tertiary: #9aa0a6;
-  --border-color: #5f6368;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: #1e293b;
+  --bg-overlay: rgba(0, 0, 0, 0.7);
   
-  /* Dark mode specific colors */
-  --color-grey: #2d2d2d;
-  --color-light-grey: #3c3c3c;
-  --bg-gray: rgba(255, 255, 255, 0.1);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #0f172a;
+  
+  --border-color: #334155;
+  --border-color-light: #475569;
+  --border-color-dark: #1e293b;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
-/* Icon sizing utilities */
-.icon-xs { font-size: var(--icon-size-xs) !important; }
-.icon-sm { font-size: var(--icon-size-sm) !important; }
-.icon-base { font-size: var(--icon-size-base) !important; }
-.icon-lg { font-size: var(--icon-size-lg) !important; }
-.icon-xl { font-size: var(--icon-size-xl) !important; }
-.icon-2xl { font-size: var(--icon-size-2xl) !important; }
-.icon-3xl { font-size: var(--icon-size-3xl) !important; }
-.icon-4xl { font-size: var(--icon-size-4xl) !important; }
+// High Contrast Mode
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #0000ff;
+    --color-primary-light: #4040ff;
+    --color-primary-dark: #0000cc;
+    --border-color: #000000;
+    --text-primary: #000000;
+    --bg-primary: #ffffff;
+  }
+  
+  [data-theme="dark"] {
+    --color-primary: #ffff00;
+    --color-primary-light: #ffff40;
+    --color-primary-dark: #cccc00;
+    --border-color: #ffffff;
+    --text-primary: #ffffff;
+    --bg-primary: #000000;
+  }
+}
 
-/* Default icon size for all sicon classes */
-[class*="sicon-"] {
-  font-size: var(--icon-size-base);
-  line-height: 1;
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-normal: 0ms;
+    --transition-slow: 0ms;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Print Styles
+@media print {
+  :root {
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
+  }
 }

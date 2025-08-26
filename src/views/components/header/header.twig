@@ -1,92 +1,174 @@
 {#
-| Variable         | Type    | Description                     |
-|------------------|---------|---------------------------------|
-| cart             | object  |                                 |
-| cart.items_count | int     |                                 |
-| cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
+| Modern Salla Theme Header Component
+|=====================================
+| Features:
+| - Clean, modern design
+| - Dark mode toggle
+| - Responsive layout
+| - Optimized icon sizing
+| - Accessibility improvements
 #}
+
 {% set important_links = theme.settings.get('important_links') %}
-<header class="store-header">
-  {# Top Nav #}
-  <div class="top-navbar">
-    <div class="container flex justify-between">
-      <div class="flex-1 flex items-center gap-2">
-          {# Footer Menu #}
+
+<header class="store-header bg-card shadow-sm border-b border-border-color">
+  {# Top Navigation Bar #}
+  <div class="top-navbar bg-secondary border-b border-border-color">
+    <div class="container">
+      <div class="flex items-center justify-between py-2">
+        <div class="flex items-center gap-4">
+          {# Footer Menu Links #}
           {% if important_links %}
-            <salla-menu source="footer" topnav></salla-menu>
+            <salla-menu source="footer" topnav class="text-sm text-secondary"></salla-menu>
           {% endif %}
 
-          {# Language & Currency Component #}
-          <div class="header-buttons">
-              {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-                  <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0">
-                      <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
-                      <span class="mx-1.5">|</span> <span>{{ currency.symbol }}</span>
-                  </button>
-                  <salla-localization-modal></salla-localization-modal>
-              {% endif %}
-          </div>
+          {# Language & Currency Selector #}
+          {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+            <button 
+              type="button" 
+              onclick="salla.event.dispatch('localization::open')" 
+              class="btn--rounded-gray flex items-center gap-2 text-sm hover:bg-tertiary transition-colors"
+              aria-label="Change language or currency"
+            >
+              <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
+              <span class="text-tertiary">|</span>
+              <span>{{ currency.symbol }}</span>
+            </button>
+            <salla-localization-modal></salla-localization-modal>
+          {% endif %}
 
-          {# Scopes | Branches #}
+          {# Store Scope/Branch Selector #}
           {% if store.scope %}
-              <button class="btn--rounded-gray"
-                      onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
-                  <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
-              </button>
+            <button 
+              class="btn--rounded-gray flex items-center gap-2 text-sm hover:bg-tertiary transition-colors"
+              onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})"
+              aria-label="Select store branch"
+            >
+              <i class="sicon-location icon-sm"></i>
+              <span>{{ store.scope.name }}</span>
+            </button>
           {% endif %}
+        </div>
 
-          {# Search bar #}
-          <div class="header-search flex-1">
-            <salla-search inline oval height="36"></salla-search>
-          </div>
+        {# Contact Information #}
+        <salla-contacts is-header class="text-sm"></salla-contacts>
       </div>
-
-      <salla-contacts is-header></salla-contacts>
     </div>
   </div>
 
-  {# Main Nav #}
-  <div id="mainnav" class="main-nav-container shadow-default bg-white">
-      <div class="inner bg-inherit">
-          <div class="container">
-              <div class="flex items-stretch justify-between relative">
-                  <div class="flex items-center">
-                      <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
-                        <i class="sicon-menu text-primary text-2xl"></i>
-                      </a>
-                      <a class="navbar-brand" href="{{ store.url }}">
-                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
-                          {% if is_page('index') %}
-                            <h1 class="sr-only">{{ store.name }}</h1>
-                          {% else %}
-                            <h2 class="sr-only">{{ store.name }}</h2>
-                          {% endif %}
-                      </a>
-                      <custom-main-menu></custom-main-menu>
-                  </div>
-                  <div class="flex items-center justify-end">
-                      {# Dark Mode Toggle #}
-                      <button id="dark-mode-toggle" class="header-btn mr-2 rtl:mr-[unset] rtl:ml-2" aria-label="Toggle dark mode">
-                        <i class="header-btn__icon sicon-moon dark:hidden"></i>
-                        <i class="header-btn__icon sicon-sun hidden dark:block"></i>
-                      </button>
-                      
-                      {% if user.type=='user' %}
-                        <salla-user-menu avatar-only show-header></salla-user-menu>
-                      {% else %}
-                          <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-                            <i class="header-btn__icon sicon-user-circle"></i>
-                          </button>
-                      {% endif %}
-                      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-                        <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-                      </salla-cart-summary>
-                  </div>
-              </div>
-          </div>
+  {# Main Navigation Bar #}
+  <div class="main-nav-container bg-card">
+    <div class="container">
+      <div class="flex items-center justify-between py-4">
+        {# Left Section - Menu Toggle & Logo #}
+        <div class="flex items-center gap-6">
+          {# Mobile Menu Toggle #}
+          <button 
+            class="lg:hidden header-btn p-2 rounded-md hover:bg-secondary transition-colors"
+            aria-label="Open mobile menu"
+            onclick="salla.event.dispatch('mobile-menu::open')"
+          >
+            <i class="sicon-menu icon-lg text-primary"></i>
+          </button>
+
+          {# Logo #}
+          <a class="navbar-brand flex-shrink-0" href="{{ store.url }}" aria-label="{{ store.name }} homepage">
+            <img 
+              fetchpriority="high" 
+              width="120" 
+              height="40" 
+              loading="eager" 
+              src="{{ store.logo }}" 
+              alt="{{ store.name }} logo"
+              class="h-10 w-auto object-contain"
+            >
+            {% if is_page('index') %}
+              <h1 class="sr-only">{{ store.name }}</h1>
+            {% else %}
+              <h2 class="sr-only">{{ store.name }}</h2>
+            {% endif %}
+          </a>
+
+          {# Desktop Main Menu #}
+          <nav class="hidden lg:block">
+            <custom-main-menu></custom-main-menu>
+          </nav>
+        </div>
+
+        {# Center Section - Search Bar #}
+        <div class="hidden md:block flex-1 max-w-md mx-8">
+          <salla-search 
+            inline 
+            oval 
+            height="40"
+            class="w-full"
+            placeholder="Search products..."
+          ></salla-search>
+        </div>
+
+        {# Right Section - Actions #}
+        <div class="flex items-center gap-2">
+          {# Dark Mode Toggle #}
+          <button 
+            id="dark-mode-toggle" 
+            class="header-btn p-2 rounded-md hover:bg-secondary transition-colors"
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode"
+          >
+            <i class="sicon-moon icon-base dark:hidden text-secondary hover:text-primary transition-colors"></i>
+            <i class="sicon-sun icon-base hidden dark:block text-secondary hover:text-primary transition-colors"></i>
+          </button>
+
+          {# User Menu #}
+          {% if user.type == 'user' %}
+            <salla-user-menu 
+              avatar-only 
+              show-header
+              class="header-btn"
+            ></salla-user-menu>
+          {% else %}
+            <button 
+              class="header-btn p-2 rounded-md hover:bg-secondary transition-colors"
+              aria-label="Sign in or create account"
+              onclick="salla.event.dispatch('login::open')"
+              title="Sign in"
+            >
+              <i class="sicon-user-circle icon-base text-secondary hover:text-primary transition-colors"></i>
+            </button>
+          {% endif %}
+
+          {# Shopping Cart #}
+          <salla-cart-summary class="header-btn">
+            <i 
+              slot="icon" 
+              class="sicon-shopping-bag icon-base text-secondary hover:text-primary transition-colors"
+            ></i>
+          </salla-cart-summary>
+        </div>
       </div>
+    </div>
+  </div>
+
+  {# Mobile Search Bar #}
+  <div class="md:hidden border-t border-border-color bg-secondary">
+    <div class="container py-3">
+      <salla-search 
+        inline 
+        oval 
+        height="40"
+        class="w-full"
+        placeholder="Search products..."
+      ></salla-search>
+    </div>
   </div>
 </header>
+
+{# Store Scopes Modal #}
 {% if store.scope %}
-    <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+  <salla-scopes 
+    selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
+  ></salla-scopes>
 {% endif %}
+
+{# Mobile Menu #}
+<div id="mobile-menu" class="lg:hidden"></div>

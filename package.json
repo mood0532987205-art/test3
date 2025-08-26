@@ -1,7 +1,7 @@
 {
-  "name": "theme-raed",
-  "version": "1.1.0",
-  "description": "Modern Enhanced Salla Theme - Upgraded with Advanced UI/UX",
+  "name": "salla-modern-theme",
+  "version": "2.0.0",
+  "description": "Modern Salla Theme - Clean, Fast, and Beautiful with Advanced Dark Mode",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "lint": "eslint src/assets/js/**/*.js",
     "optimize": "imagemin src/assets/images/**/* --out-dir=public/images"
   },
-  "author": "Salla - Enhanced by Master Elite Website Builder",
+  "author": "Salla - Modern Theme by Master Elite Website Builder",
   "dependencies": {
     "@babel/runtime": "^7.26.10",
     "animejs": "^3.2.2",

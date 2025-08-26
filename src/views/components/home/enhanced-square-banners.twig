@@ -29,7 +29,7 @@
                 {# Enhanced banner link with better accessibility #}
                 <a href="{{ banner.url }}" 
                    aria-label="{{ (banner.title ? banner.title : 'square-banner-' ~ index) | e('html_attr') }}" 
-                   class="block relative {{ component.banners|length <= 3 ? 'aspect-[4/3]' : 'aspect-square' }} overflow-hidden">
+                   class="block relative {{ component.banners|length <= 3 ? 'aspect-4-3' : 'aspect-square' }} overflow-hidden">
                    
                     {# Background image with parallax effect #}
                     <div 
