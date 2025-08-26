@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Test - Salla Modern Theme</title>
+    <link rel="stylesheet" href="public/app.css">
+    <style>
+        :root {
+            --font-main: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body id="app" class="overflow-x-hidden">
+    <div class="app-inner flex flex-col min-h-full">
+        <!-- Header Test -->
+        <header class="store-header bg-card shadow-sm border-b border-border-color">
+            <div class="main-nav-container bg-card">
+                <div class="container">
+                    <div class="flex items-center justify-between py-4">
+                        <!-- Left Section -->
+                        <div class="flex items-center gap-6">
+                            <div class="navbar-brand flex-shrink-0">
+                                <h1 class="text-2xl font-bold text-primary">Test Store</h1>
+                            </div>
+                        </div>
+
+                        <!-- Right Section -->
+                        <div class="flex items-center gap-2">
+                            <!-- Dark Mode Toggle -->
+                            <button 
+                                id="dark-mode-toggle" 
+                                class="header-btn p-2 rounded-md hover:bg-secondary transition-colors"
+                                aria-label="Toggle dark mode"
+                                title="Toggle dark mode"
+                            >
+                                <i class="sicon-moon icon-base dark:hidden text-secondary hover:text-primary transition-colors">🌙</i>
+                                <i class="sicon-sun icon-base hidden dark:block text-secondary hover:text-primary transition-colors">☀️</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 bg-primary">
+            <div class="container py-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-card rounded-lg shadow-md p-6 border border-border-color">
+                        <h2 class="text-xl font-semibold text-primary mb-4">Theme Colors</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-primary rounded"></div>
+                                <span class="text-secondary">Primary Color</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-secondary rounded"></div>
+                                <span class="text-secondary">Secondary Color</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-accent rounded"></div>
+                                <span class="text-secondary">Accent Color</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-card rounded-lg shadow-md p-6 border border-border-color">
+                        <h2 class="text-xl font-semibold text-primary mb-4">Typography</h2>
+                        <div class="space-y-2">
+                            <p class="text-primary font-bold">Primary Text</p>
+                            <p class="text-secondary">Secondary Text</p>
+                            <p class="text-tertiary">Tertiary Text</p>
+                            <p class="text-brand">Brand Text</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-card rounded-lg shadow-md p-6 border border-border-color">
+                        <h2 class="text-xl font-semibold text-primary mb-4">Buttons</h2>
+                        <div class="space-y-3">
+                            <button class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors">
+                                Primary Button
+                            </button>
+                            <button class="w-full bg-secondary text-white py-2 px-4 rounded-md hover:bg-secondary-dark transition-colors">
+                                Secondary Button
+                            </button>
+                            <button class="w-full border border-border-color text-primary py-2 px-4 rounded-md hover:bg-secondary transition-colors">
+                                Outline Button
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme Status -->
+                <div class="mt-8 p-4 bg-card rounded-lg border border-border-color">
+                    <h3 class="text-lg font-semibold text-primary mb-2">Theme Status</h3>
+                    <p class="text-secondary">
+                        Current theme: <span id="current-theme" class="font-medium text-brand">Light</span>
+                    </p>
+                    <p class="text-tertiary text-sm mt-1">
+                        Click the moon/sun icon in the header to toggle between light and dark modes.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-secondary border-t border-border-color py-6">
+            <div class="container">
+                <div class="text-center">
+                    <p class="text-secondary">© 2024 Test Store - Salla Modern Theme</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="public/app.js"></script>
+    <script>
+        // Update theme status display
+        function updateThemeStatus() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const themeSpan = document.getElementById('current-theme');
+            if (themeSpan) {
+                themeSpan.textContent = isDark ? 'Dark' : 'Light';
+            }
+        }
+
+        // Listen for theme changes
+        window.addEventListener('themeChanged', updateThemeStatus);
+        
+        // Initial update
+        document.addEventListener('DOMContentLoaded', updateThemeStatus);
+    </script>
+</body>
+</html>

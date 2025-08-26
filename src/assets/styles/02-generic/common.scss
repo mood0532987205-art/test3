@@ -21,6 +21,22 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// Ensure header is visible
+.store-header {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+// Ensure app-inner is properly displayed
+.app-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
 }
 
 // Typography
@@ -386,6 +402,28 @@ button {
   }
 }
 
+// Theme Fixes
+.app-inner {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+// Dark mode specific fixes
+.dark {
+  color-scheme: dark;
+}
+
+.dark .app-inner {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+// Ensure proper theme inheritance
+* {
+  border-color: var(--border-color);
+}
+
 // Print Styles
 @media print {
   * {
@@ -394,41 +432,41 @@ button {
     box-shadow: none !important;
     text-shadow: none !important;
   }
-  
+
   a, a:visited {
     text-decoration: underline;
   }
-  
+
   a[href]:after {
     content: " (" attr(href) ")";
   }
-  
+
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
-  
+
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
-  
+
   thead {
     display: table-header-group;
   }
-  
+
   tr, img {
     page-break-inside: avoid;
   }
-  
+
   img {
     max-width: 100% !important;
   }
-  
+
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
-  
+
   h2, h3 {
     page-break-after: avoid;
   }

@@ -308,10 +308,12 @@ isElementLoaded(selector){
     // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
+    // Apply initial theme
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
+      this.applyDarkMode(true);
+    } else {
+      this.applyDarkMode(false);
     }
 
     // Add event listener to dark mode toggle button
@@ -319,17 +321,74 @@ isElementLoaded(selector){
     if (darkModeToggle) {
       darkModeToggle.addEventListener('click', () => {
         const isDark = document.documentElement.classList.contains('dark');
-        
-        if (isDark) {
-          document.documentElement.classList.remove('dark');
-          document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-        } else {
-          document.documentElement.classList.add('dark');
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
+        this.toggleDarkMode(!isDark);
+      });
+    }
+
+    // Listen for system theme changes
+    if (window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      mediaQuery.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          this.applyDarkMode(e.matches);
         }
       });
+    }
+  }
+
+  /**
+   * Apply dark mode theme
+   */
+  applyDarkMode(isDark) {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (isDark) {
+      html.classList.add('dark');
+      body.classList.add('dark');
+      html.setAttribute('data-theme', 'dark');
+    } else {
+      html.classList.remove('dark');
+      body.classList.remove('dark');
+      html.setAttribute('data-theme', 'light');
+    }
+
+    this.updateDarkModeIcon(isDark);
+  }
+
+  /**
+   * Toggle dark mode
+   */
+  toggleDarkMode(isDark) {
+    this.applyDarkMode(isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+    // Dispatch custom event for other components
+    window.dispatchEvent(new CustomEvent('themeChanged', {
+      detail: { theme: isDark ? 'dark' : 'light' }
+    }));
+  }
+
+  /**
+   * Update dark mode icon visibility
+   */
+  updateDarkModeIcon(isDark) {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    if (!darkModeToggle) return;
+
+    const moonIcon = darkModeToggle.querySelector('.sicon-moon');
+    const sunIcon = darkModeToggle.querySelector('.sicon-sun');
+
+    if (isDark) {
+      if (moonIcon) moonIcon.classList.add('hidden', 'dark:hidden');
+      if (sunIcon) sunIcon.classList.remove('hidden', 'dark:block');
+      darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+      darkModeToggle.setAttribute('title', 'Switch to light mode');
+    } else {
+      if (moonIcon) moonIcon.classList.remove('hidden', 'dark:hidden');
+      if (sunIcon) sunIcon.classList.add('hidden', 'dark:block');
+      darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
+      darkModeToggle.setAttribute('title', 'Switch to dark mode');
     }
   }
 }

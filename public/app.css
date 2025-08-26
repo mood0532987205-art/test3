@@ -18363,7 +18363,7 @@ input[type=radio].sr-only:checked ~ div.s-wallet-table-tbody-tr a {
   --container-padding: 1rem;
   --container-max-width: 1280px;
 }
-[data-theme=dark], .dark {
+[data-theme=dark], .dark, html.dark {
   --bg-primary: #111827;
   --bg-secondary: #1f2937;
   --bg-tertiary: #374151;
@@ -18380,6 +18380,9 @@ input[type=radio].sr-only:checked ~ div.s-wallet-table-tbody-tr a {
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --main-text-color: var(--text-primary);
+  --color-main: var(--color-primary);
+  --infinte-color: var(--color-primary);
 }
 .icon-xs {
   font-size: 0.75rem;
@@ -18542,6 +18545,18 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+.store-header {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.app-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
 }
 h1, h2, h3, h4, h5, h6 {
   color: #111827;
@@ -19243,6 +19258,27 @@ button:disabled {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+.app-inner {
+  background-color: #ffffff;
+  background-color: var(--bg-primary);
+  color: #111827;
+  color: var(--text-primary);
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+.dark {
+  color-scheme: dark;
+}
+.dark .app-inner {
+  background-color: #ffffff;
+  background-color: var(--bg-primary);
+  color: #111827;
+  color: var(--text-primary);
+}
+* {
+  border-color: #e5e7eb;
+  border-color: var(--border-color);
 }
 @media print {
   * {
