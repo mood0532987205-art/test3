@@ -70,6 +70,7 @@ module.exports = {
                     700: '#0369a1',
                     800: '#075985',
                     900: '#0c4a6e',
+                    DEFAULT: '#414042', // Using the CSS variable value
                 },
                 'secondary': {
                     50: '#fdf4ff',
@@ -272,7 +273,6 @@ module.exports = {
     plugins: [
       require('@salla.sa/twilight-tailwind-theme'),
       require('@tailwindcss/forms'),
-      require('@tailwindcss/line-clamp'),
       require('@tailwindcss/aspect-ratio'),
     ],
 }

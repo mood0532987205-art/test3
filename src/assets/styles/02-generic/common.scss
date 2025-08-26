@@ -407,3 +407,14 @@ salla-modal {
     @apply text-primary hover:text-primary-d;
   }
 }
+
+/* Custom aspect ratio utilities */
+@layer utilities {
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .aspect-\[4\/3\] {
+    aspect-ratio: 4 / 3;
+  }
+}
