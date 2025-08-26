@@ -76,28 +76,25 @@
   }
 }
 
-// Enhanced Glowing Effects
-.welcome-banner {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  box-shadow: var(--glow-secondary);
+// Dark Mode Support
+[data-theme="dark"], .dark {
+  .welcome-banner {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
 
-  &::before {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  }
-}
-
-#mainnav {
-  background: var(--bg-gradient-card);
-  border-bottom: var(--border-glow);
-
-  &.fixed-pinned {
-    background: var(--bg-gradient-card);
-    box-shadow: var(--shadow-lg), var(--glow-subtle);
-    border-bottom: var(--border-glow-hover);
+    &::before {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    }
   }
 
-  &.fixed-header {
-    box-shadow: var(--shadow-xl), var(--glow-primary);
+  #mainnav {
+    &.fixed-pinned {
+      background-color: var(--bg-card);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    &.fixed-header {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
   }
 }
 
@@ -284,65 +281,67 @@
   }
 }
 
-// Enhanced Glowing Header Styles
-.store-header {
-  background: var(--bg-gradient-card);
-  border-color: var(--border-color);
-  box-shadow: var(--glow-subtle);
-
-  .top-navbar {
-    background: var(--bg-gradient-primary);
-    border-color: var(--border-color);
-
-    .btn--rounded-gray {
-      border: var(--border-glow);
-      color: var(--text-secondary);
-      background: rgba(255, 107, 53, 0.05);
-
-      &:hover {
-        background: var(--bg-gradient-hover);
-        border: var(--border-glow-hover);
-        color: var(--text-primary);
-        box-shadow: var(--glow-subtle);
-      }
-    }
-  }
-}
-
-.store-header {
-  .main-nav-container {
+// Dark Mode Styles
+[data-theme="dark"],
+.dark {
+  .store-header {
     background-color: var(--bg-card);
     border-color: var(--border-color);
 
-    .navbar-brand img {
-      filter: brightness(0) invert(1);
-    }
-
-    .header-btn {
-      &:hover {
-        background-color: var(--bg-secondary);
-      }
-    }
-
-    [class*="sicon-"] {
-      color: var(--text-secondary);
-    }
-
-    &:hover [class*="sicon-"] {
-      color: var(--text-primary);
-    }
-
-    salla-search ::part(input) {
+    .top-navbar {
       background-color: var(--bg-secondary);
       border-color: var(--border-color);
-      color: var(--text-primary);
 
-      &:focus {
-        border-color: var(--color-primary);
+      .btn--rounded-gray {
+        border-color: var(--border-color);
+        color: var(--text-secondary);
+
+        &:hover {
+          background-color: var(--bg-tertiary);
+          border-color: var(--border-color-light);
+          color: var(--text-primary);
+        }
+      }
+    }
+}
+
+// Additional header styles for dark mode compatibility
+[data-theme="dark"], .dark {
+  .store-header {
+    .main-nav-container {
+      background-color: var(--bg-card);
+      border-color: var(--border-color);
+
+      .navbar-brand img {
+        filter: brightness(0) invert(1);
       }
 
-      &::placeholder {
-        color: var(--text-tertiary);
+      .header-btn {
+        &:hover {
+          background-color: var(--bg-secondary);
+        }
+
+        [class*="sicon-"] {
+          color: var(--text-secondary);
+        }
+
+        &:hover [class*="sicon-"] {
+          color: var(--text-primary);
+        }
+      }
+
+      salla-search ::part(input) {
+        background-color: var(--bg-secondary);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+
+        &:focus {
+          border-color: var(--color-primary);
+        }
+
+        &::placeholder {
+          color: var(--text-tertiary);
+        }
       }
     }
   }

@@ -121,6 +121,16 @@
 
         {# Right Section - Actions #}
         <div class="flex items-center gap-2">
+          {# Dark Mode Toggle #}
+          <button
+            id="dark-mode-toggle"
+            class="header-btn p-2 rounded-md hover:bg-secondary transition-colors"
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode"
+          >
+            <i class="sicon-moon icon-base dark:hidden text-secondary hover:text-primary transition-colors"></i>
+            <i class="sicon-sun icon-base hidden dark:block text-secondary hover:text-primary transition-colors"></i>
+          </button>
 
           {# User Menu #}
           {% if user.type == 'user' %}

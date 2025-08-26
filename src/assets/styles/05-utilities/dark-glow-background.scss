@@ -1,0 +1,68 @@
+// Dark Glowing Background Override
+// This file adds a dark glowing background while keeping everything else the same
+
+// Override body background with dark glowing effect
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0f0f0f 100%) !important;
+  position: relative;
+  
+  // Add subtle glow texture overlay
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// Ensure main content areas have proper backgrounds
+.app-inner,
+.main-content,
+.container {
+  background: transparent;
+}
+
+// Add subtle glow to cards and components
+.card,
+.product-card,
+.s-product-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 107, 53, 0.1);
+  
+  &:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 107, 53, 0.2);
+  }
+}
+
+// Add glow to buttons
+.btn {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 107, 53, 0.15);
+  }
+  
+  &.btn-primary {
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+    
+    &:hover {
+      box-shadow: 0 6px 12px rgba(255, 107, 53, 0.4), 0 0 20px rgba(255, 107, 53, 0.3);
+    }
+  }
+}
+
+// Add glow to header
+.store-header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 107, 53, 0.05);
+}
+
+// Add glow to welcome banner
+.welcome-banner {
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}

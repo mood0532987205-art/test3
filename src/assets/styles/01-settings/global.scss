@@ -1,9 +1,9 @@
-// Modern Salla Theme - Glowing Black with Orange Accents
-// ======================================================
+// Modern Salla Theme - Orange Blue Design System
+// ================================================
 
-// Color System - Single Glowing Black Theme
+// Color System
 :root {
-  // Primary Colors - Orange Glow Theme
+  // Primary Colors - Orange Theme
   --color-primary: #ff6b35;
   --color-primary-light: #ff8a5c;
   --color-primary-dark: #e55a2b;
@@ -68,26 +68,26 @@
   --color-danger: #ef4444;
   --color-info: #0066cc;
 
-  // Glowing Black Theme Colors
+  // Light Theme Colors (with dark glowing background)
   --bg-primary: #0a0a0a;
   --bg-secondary: #111111;
   --bg-tertiary: #1a1a1a;
   --bg-card: #0f0f0f;
   --bg-overlay: rgba(0, 0, 0, 0.8);
 
-  --text-primary: #ffffff;
-  --text-secondary: #e5e5e5;
-  --text-tertiary: #cccccc;
-  --text-inverse: #000000;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-inverse: #ffffff;
 
-  --border-color: #333333;
-  --border-color-light: #444444;
-  --border-color-dark: #222222;
+  --border-color: #e5e7eb;
+  --border-color-light: #f3f4f6;
+  --border-color-dark: #d1d5db;
   
-  --shadow-sm: 0 1px 2px 0 rgba(255, 107, 53, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(255, 107, 53, 0.2), 0 2px 4px -1px rgba(255, 107, 53, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(255, 107, 53, 0.3), 0 4px 6px -2px rgba(255, 107, 53, 0.2);
-  --shadow-xl: 0 20px 25px -5px rgba(255, 107, 53, 0.4), 0 10px 10px -5px rgba(255, 107, 53, 0.3);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   // Typography
   --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -166,44 +166,36 @@
   --container-max-width: 1280px;
 }
 
-// Glowing Effects and Enhancements
-:root {
-  // Glow Effects
-  --glow-primary: 0 0 20px rgba(255, 107, 53, 0.5);
-  --glow-secondary: 0 0 15px rgba(255, 107, 53, 0.3);
-  --glow-subtle: 0 0 10px rgba(255, 107, 53, 0.2);
-  --glow-intense: 0 0 30px rgba(255, 107, 53, 0.7);
+// Dark Theme Variables
+[data-theme="dark"], .dark, html.dark {
+  // Dark Theme Colors
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+  --bg-card: #1f2937;
+  --bg-overlay: rgba(0, 0, 0, 0.7);
 
-  // Enhanced borders with glow
-  --border-glow: 1px solid rgba(255, 107, 53, 0.3);
-  --border-glow-hover: 1px solid rgba(255, 107, 53, 0.6);
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --text-inverse: #111827;
 
-  // Background gradients
-  --bg-gradient-primary: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0f0f0f 100%);
-  --bg-gradient-card: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-  --bg-gradient-hover: linear-gradient(135deg, #1a1a1a 0%, #222222 100%);
+  --border-color: #374151;
+  --border-color-light: #4b5563;
+  --border-color-dark: #6b7280;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+
+  // Salla Theme Compatibility Variables for Dark Mode
+  --main-text-color: var(--text-primary);
+  --color-main: var(--color-primary);
+  --infinte-color: var(--color-primary);
 }
 
-// Global glowing theme styles
-body {
-  background: var(--bg-gradient-primary);
-  color: var(--text-primary);
 
-  // Add subtle texture
-  &::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
-  }
-}
 
 // Icon Size Utilities
 .icon-xs { font-size: var(--icon-size-xs); }
