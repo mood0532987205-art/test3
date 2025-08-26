@@ -12,6 +12,19 @@
 {% set important_links = theme.settings.get('important_links') %}
 
 <header class="store-header bg-card shadow-sm border-b border-border-color">
+  {# Welcome Banner #}
+  <div class="welcome-banner bg-gradient-to-r from-orange-500 to-orange-600 text-white py-2">
+    <div class="container">
+      <div class="flex items-center justify-center">
+        <div class="flex items-center gap-2">
+          <i class="sicon-gift text-lg animate-bounce"></i>
+          <span class="font-medium text-sm md:text-base">WELCOME TO OUR SHOP</span>
+          <i class="sicon-gift text-lg animate-bounce"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
   {# Top Navigation Bar #}
   <div class="top-navbar bg-secondary border-b border-border-color">
     <div class="container">
@@ -57,8 +70,8 @@
   </div>
 
   {# Main Navigation Bar #}
-  <div class="main-nav-container bg-card">
-    <div class="container">
+  <div id="mainnav" class="main-nav-container bg-card sticky-header">
+    <div class="inner container">
       <div class="flex items-center justify-between py-4">
         {# Left Section - Menu Toggle & Logo #}
         <div class="flex items-center gap-6">
