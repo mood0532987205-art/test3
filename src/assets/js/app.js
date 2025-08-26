@@ -305,31 +305,75 @@ isElementLoaded(selector){
    * Initialize dark mode toggle functionality
    */
   initDarkModeToggle() {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Get the toggle button
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    if (!toggleButton) return;
+
+    // Get current theme preference
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
+    // Apply initial theme
+    if (currentTheme === 'dark' || (!currentTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.classList.add('dark');
+        this.updateToggleIcon(true);
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.classList.remove('dark');
+        this.updateToggleIcon(false);
     }
 
-    // Add event listener to dark mode toggle button
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    if (darkModeToggle) {
-      darkModeToggle.addEventListener('click', () => {
+    // Add click event listener
+    toggleButton.addEventListener('click', () => {
         const isDark = document.documentElement.classList.contains('dark');
         
         if (isDark) {
-          document.documentElement.classList.remove('dark');
-          document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
+            // Switch to light mode
+            document.documentElement.removeAttribute('data-theme');
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            this.updateToggleIcon(false);
         } else {
-          document.documentElement.classList.add('dark');
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
+            // Switch to dark mode
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            this.updateToggleIcon(true);
         }
-      });
+    });
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            if (e.matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.classList.add('dark');
+                this.updateToggleIcon(true);
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.documentElement.classList.remove('dark');
+                this.updateToggleIcon(false);
+            }
+        }
+    });
+  }
+
+  updateToggleIcon(isDark) {
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    if (!toggleButton) return;
+
+    const moonIcon = toggleButton.querySelector('.sicon-moon');
+    const sunIcon = toggleButton.querySelector('.sicon-sun');
+
+    if (isDark) {
+        // Show sun icon (to switch to light mode)
+        if (moonIcon) moonIcon.style.display = 'none';
+        if (sunIcon) sunIcon.style.display = 'block';
+    } else {
+        // Show moon icon (to switch to dark mode)
+        if (moonIcon) moonIcon.style.display = 'block';
+        if (sunIcon) sunIcon.style.display = 'none';
     }
   }
 }

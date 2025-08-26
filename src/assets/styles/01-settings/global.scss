@@ -1,22 +1,42 @@
-// Modern Salla Theme - Design System
-// ======================================
+// Modern Salla Theme - Orange Blue Design System
+// ================================================
 
 // Color System
 :root {
-  // Primary Colors
-  --color-primary: #3b82f6;
-  --color-primary-light: #60a5fa;
-  --color-primary-dark: #1d4ed8;
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  // Primary Colors - Orange Theme
+  --color-primary: #ff6b35;
+  --color-primary-light: #ff8a5c;
+  --color-primary-dark: #e55a2b;
+  --color-primary-50: #fff7f4;
+  --color-primary-100: #ffe8e0;
+  --color-primary-200: #ffd1c0;
+  --color-primary-300: #ffb399;
+  --color-primary-400: #ff8a5c;
+  --color-primary-500: #ff6b35;
+  --color-primary-600: #e55a2b;
+  --color-primary-700: #cc4a22;
+  --color-primary-800: #b33a1a;
+  --color-primary-900: #992a12;
+
+  // Secondary Colors - Blue Theme
+  --color-secondary: #0066cc;
+  --color-secondary-light: #3388dd;
+  --color-secondary-dark: #0052a3;
+  --color-secondary-50: #f0f8ff;
+  --color-secondary-100: #e0f0ff;
+  --color-secondary-200: #c1e0ff;
+  --color-secondary-300: #a3d0ff;
+  --color-secondary-400: #85c0ff;
+  --color-secondary-500: #0066cc;
+  --color-secondary-600: #0052a3;
+  --color-secondary-700: #003d7a;
+  --color-secondary-800: #002952;
+  --color-secondary-900: #001429;
+
+  // Accent Colors
+  --color-accent: #ffd700;
+  --color-accent-light: #ffe44d;
+  --color-accent-dark: #e6c200;
 
   // Neutral Colors
   --color-white: #ffffff;
@@ -36,7 +56,7 @@
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
-  --color-info: #3b82f6;
+  --color-info: #0066cc;
 
   // Light Theme Colors
   --bg-primary: #ffffff;
@@ -181,18 +201,24 @@
 // High Contrast Mode
 @media (prefers-contrast: high) {
   :root {
-    --color-primary: #0000ff;
-    --color-primary-light: #4040ff;
-    --color-primary-dark: #0000cc;
+    --color-primary: #ff6b35;
+    --color-primary-light: #ff8a5c;
+    --color-primary-dark: #e55a2b;
+    --color-secondary: #0066cc;
+    --color-secondary-light: #3388dd;
+    --color-secondary-dark: #0052a3;
     --border-color: #000000;
     --text-primary: #000000;
     --bg-primary: #ffffff;
   }
   
   [data-theme="dark"] {
-    --color-primary: #ffff00;
-    --color-primary-light: #ffff40;
-    --color-primary-dark: #cccc00;
+    --color-primary: #ff8a5c;
+    --color-primary-light: #ffb399;
+    --color-primary-dark: #ff6b35;
+    --color-secondary: #3388dd;
+    --color-secondary-light: #85c0ff;
+    --color-secondary-dark: #0066cc;
     --border-color: #ffffff;
     --text-primary: #ffffff;
     --bg-primary: #000000;

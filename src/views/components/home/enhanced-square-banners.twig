@@ -11,7 +11,7 @@
 #}
 
 <section class="s-block s-block--banners container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-    {# Section header #}
+    {# Section header with orange-blue gradient #}
     <div class="text-center mb-12">
         <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             تصفح مجموعاتنا المميزة
@@ -19,7 +19,7 @@
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             اكتشف أحدث المنتجات والعروض الحصرية في متجرنا
         </p>
-        <div class="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto mt-6 rounded-full"></div>
+        <div class="w-24 h-1 bg-gradient-orange-blue mx-auto mt-6 rounded-full shadow-glow"></div>
     </div>
 
     {# Enhanced grid layout with modern styling #}
@@ -37,17 +37,17 @@
                         class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110">
                     </div>
                     
-                    {# Modern gradient overlay #}
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    {# Modern gradient overlay with orange-blue theme #}
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300"></div>
                     
                     {# Enhanced content area #}
                     {% if banner.title or banner.description %}
                         <div class="absolute inset-0 flex flex-col justify-end p-6 lg:p-8">
                             <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                                 
-                                {# Modern badge indicator #}
-                                <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-xs font-medium text-white mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <span class="w-1.5 h-1.5 bg-primary-400 rounded-full mr-2"></span>
+                                {# Modern badge indicator with orange theme #}
+                                <div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-xs font-medium text-white mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <span class="w-1.5 h-1.5 bg-primary-400 rounded-full mr-2 animate-pulse-gentle"></span>
                                     مجموعة مميزة
                                 </div>
                                 
@@ -65,26 +65,28 @@
                                     </p>
                                 {% endif %}
                                 
-                                {# Modern CTA button #}
+                                {# Modern CTA button with orange-blue gradient #}
                                 <div class="inline-flex items-center text-white font-semibold text-sm group/btn opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                                     <span class="mr-2">استكشف الآن</span>
-                                    <svg class="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
+                                    <div class="w-4 h-4 bg-gradient-orange-blue rounded-full flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white transition-transform group-hover/btn:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     {% endif %}
                     
-                    {# Decorative corner element #}
-                    <div class="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-primary-400/30 to-secondary-400/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"></div>
+                    {# Decorative corner element with orange-blue gradient #}
+                    <div class="absolute top-4 right-4 w-8 h-8 bg-gradient-orange-blue rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200 shadow-glow"></div>
                     
-                    {# Shimmer effect on hover #}
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    {# Shimmer effect on hover with orange-blue colors #}
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-secondary/20 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </a>
                 
                 {# Loading skeleton for better UX #}
-                <div class="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-100 to-secondary-100 animate-pulse-gentle"></div>
             </div>
         {% endfor %}
     </div>
@@ -111,17 +113,31 @@
         }
         
         /* Loading animation improvement */
-        .animate-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        .animate-pulse-gentle {
+            animation: pulseGentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         
-        @keyframes pulse {
+        @keyframes pulseGentle {
             0%, 100% {
                 opacity: 1;
             }
             50% {
-                opacity: .5;
+                opacity: 0.8;
             }
+        }
+        
+        /* Orange-blue gradient animations */
+        .bg-gradient-orange-blue {
+            background: linear-gradient(135deg, #ff6b35 0%, #0066cc 100%);
+        }
+        
+        .shadow-glow {
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Enhanced hover effects for the theme */
+        .group:hover .shadow-glow {
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
         }
     </style>
 </section>
