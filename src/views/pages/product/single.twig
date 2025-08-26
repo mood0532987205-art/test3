@@ -371,27 +371,13 @@
                             </div>
                         {% endif %}
                         {# Add to cart #}
-                        <salla-add-product-button
-                                quick-buy
-                                {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}}
-                                {{product.is_require_shipping ? 'required-shipping' : ''}}
-                                amount="{{ product.base_currency_price }}"
+                        <aurora-add-button
                                 class="mt-5 w-full sticky-product-bar__btn"
                                 product-status="{{ product.status }}"
                                 product-type="{{ product.type }}"
-                                product-id="{{ product.id }}"
-                                loader-position="end"
-                                type="submit"
-                                width="wide"
-                                {# Notify availability props#}
-                                {% if product.notify_availability %}
-                                    {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}
-                                    channels="{{ product.notify_availability.channels|join(',') }}"
-                                    subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}"
-                                    {{ product.notify_availability.options ? 'notify-options-availability' : '' }}
-                                {% endif %}>
+                                product-id="{{ product.id }}">
                             {{ product.add_to_cart_label }}
-                        </salla-add-product-button>
+                        </aurora-add-button>
                     </section>
                     {% if product.is_giftable %}
                         <salla-gifting class="mt-5" widget-subtitle="{{ gifting_intro }}" product-id="{{ product.id }}" {{ product.is_require_shipping ? 'physical-products' : ''  }}></salla-gifting>

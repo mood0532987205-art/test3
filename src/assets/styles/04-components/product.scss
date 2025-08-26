@@ -124,7 +124,8 @@
       @apply flex flex-wrap flex-col gap-2.5 sm:gap-4 fixed z-[2] bottom-0 left-0 p-3 w-full justify-between items-center shadow-[-1px_-2px_9px_0_rgba(0,0,0,0.05)] transition duration-700 delay-500 translate-y-100 opacity-0 ease-elastic;
 
       &__quantity,
-      salla-add-product-button{
+      salla-add-product-button,
+      aurora-add-button{
         @apply translate-y-5 opacity-0 transition duration-700 ease-elastic w-full;
       }
 
@@ -146,14 +147,16 @@
         @apply m-0 delay-[900ms];
       }
 
-      salla-add-product-button{
+      salla-add-product-button,
+      aurora-add-button{
         @apply w-auto m-0 flex-1 delay-1000;
       }
 
       .hydrated &{
         &,
         &__quantity,
-        salla-add-product-button{
+        salla-add-product-button,
+        aurora-add-button{
           @apply translate-y-0 opacity-100;
         }
       }
@@ -251,7 +254,8 @@
 
 .s-product{
     &-card{
-      &-full-image salla-add-product-button {
+      &-full-image salla-add-product-button,
+      &-full-image aurora-add-button {
         @apply bg-white rounded;
       }
     

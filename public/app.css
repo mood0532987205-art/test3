@@ -19765,6 +19765,38 @@ textarea.form-input {
     border-color: rgba(22, 163, 74, var(--tw-border-opacity, 1));
 }
 
+.aurora-button{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:.5rem;overflow:hidden;font-size:.875rem;font-weight:600;color:#f3f4f6;border-radius:.75rem;background-color:#18181b;transition:all .3s ease-in-out;cursor:pointer;border:none;outline:none;width:100%}
+
+.aurora-button:hover{box-shadow:0 25px 50px -12px rgba(6,182,212,.4)}
+
+.aurora-button::before{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(circle at 10% 20%, rgb(192, 132, 252), transparent 50%),radial-gradient(circle at 80% 30%, rgb(96, 165, 250), transparent 50%),radial-gradient(circle at 50% 90%, rgb(251, 146, 60), transparent 50%);filter:blur(15px);animation:aurora-glow 8s linear infinite;z-index:0;transition:all .4s ease}
+
+.aurora-button::after{content:"";position:absolute;left:50%;left:var(--x, 50%);top:50%;top:var(--y, 50%);transform:translate(-50%, -50%);width:200px;height:200px;background:radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 80%);border-radius:50%;opacity:0;transition:opacity .2s ease-out;z-index:1;pointer-events:none}
+
+.aurora-button:hover::before{filter:blur(20px)}
+
+.aurora-button:hover::after{opacity:1}
+
+.aurora-button .aurora-button-content{position:relative;z-index:10;padding:.75rem 2.5rem;transition:all .075s ease-in;background-color:#111827;border-radius:.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%}
+
+.aurora-button:hover .aurora-button .aurora-button-content{background-color:rgba(17,24,39,.9)}
+
+.aurora-button.loading{pointer-events:none}
+
+.aurora-button.loading .aurora-button-content{opacity:.7}
+
+.aurora-button.loading .aurora-loader{display:inline-block;width:16px;height:16px;border:2px solid hsla(0,0%,100%,.3);border-radius:50%;border-top-color:#fff;animation:spin 1s ease-in-out infinite}
+
+.aurora-button:disabled{opacity:.5;cursor:not-allowed;pointer-events:none}
+
+@keyframes aurora-glow{0%{transform:rotate(0deg) scale(1.2)}50%{transform:rotate(180deg) scale(1.3)}100%{transform:rotate(360deg) scale(1.2)}}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+[data-theme=dark] .aurora-button .aurora-button-content,.dark .aurora-button .aurora-button-content{background-color:#1f2937}
+
+.aurora-button:hover [data-theme=dark] .aurora-button .aurora-button-content,.aurora-button:hover .dark .aurora-button .aurora-button-content{background-color:rgba(31,41,55,.9)}
+
 salla-button[width=wide] {
     width: 100%;
 }
@@ -22596,7 +22628,7 @@ input[type=radio].sr-only:checked~div.pie-wrapper{border-color:var(--color-main)
         .is-sticky-product-bar .sticky-product-bar {
             gap: 1rem;
         }
-    }.is-sticky-product-bar .sticky-product-bar__quantity,.is-sticky-product-bar .sticky-product-bar salla-add-product-button {
+    }.is-sticky-product-bar .sticky-product-bar__quantity,.is-sticky-product-bar .sticky-product-bar salla-add-product-button,.is-sticky-product-bar .sticky-product-bar aurora-add-button {
         width: 100%;
         --tw-translate-y: 1.25rem;
         transform: translate(var(--tw-translate-x), 1.25rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -22619,12 +22651,12 @@ input[type=radio].sr-only:checked~div.pie-wrapper{border-color:var(--color-main)
         width: 100%;
     }.is-sticky-product-bar .sticky-product-bar__quantity salla-quantity-input .s-quantity-input-input {
         width: 80%;
-    }.is-sticky-product-bar .sticky-product-bar salla-add-product-button {
+    }.is-sticky-product-bar .sticky-product-bar salla-add-product-button,.is-sticky-product-bar .sticky-product-bar aurora-add-button {
         margin: 0px;
         width: auto;
         flex: 1 1 0%;
         transition-delay: 1000ms;margin:0;
-    }.hydrated .is-sticky-product-bar .sticky-product-bar,.hydrated .is-sticky-product-bar .sticky-product-bar__quantity,.hydrated .is-sticky-product-bar .sticky-product-bar salla-add-product-button {
+    }.hydrated .is-sticky-product-bar .sticky-product-bar,.hydrated .is-sticky-product-bar .sticky-product-bar__quantity,.hydrated .is-sticky-product-bar .sticky-product-bar salla-add-product-button,.hydrated .is-sticky-product-bar .sticky-product-bar aurora-add-button {
         --tw-translate-y: 0px;
         transform: translate(var(--tw-translate-x), 0px) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -22742,7 +22774,7 @@ input[type=radio].sr-only:checked~div.model-viewer__poster{border-color:var(--co
 
 @media(max-width: 640px){.s-offer-modal-slider-centered .s-offer-modal-slider-item{max-width:46% !important}}
 
-.s-product-card-full-image salla-add-product-button {
+.s-product-card-full-image salla-add-product-button,.s-product-card-full-image aurora-add-button {
     border-radius: .75rem;
     --tw-bg-opacity: 1;
     background-color: rgba(255, 255, 255, 1);
