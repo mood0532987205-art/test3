@@ -65,6 +65,12 @@
                       <custom-main-menu></custom-main-menu>
                   </div>
                   <div class="flex items-center justify-end">
+                      {# Dark Mode Toggle #}
+                      <button id="dark-mode-toggle" class="header-btn mr-2 rtl:mr-[unset] rtl:ml-2" aria-label="Toggle dark mode">
+                        <i class="header-btn__icon sicon-moon dark:hidden"></i>
+                        <i class="header-btn__icon sicon-sun hidden dark:block"></i>
+                      </button>
+                      
                       {% if user.type=='user' %}
                         <salla-user-menu avatar-only show-header></salla-user-menu>
                       {% else %}

@@ -19,6 +19,7 @@ $main-text-color: var(--main-text-color);
   --bg-gray: #c6c7ce1a;
   --color-grey: #f5f7f9;
   --color-light-grey: #eeeeee;
+  
   /* font-size */
   --font-sm: 0.8685714286rem;
   /* font-family: ; */
@@ -26,4 +27,58 @@ $main-text-color: var(--main-text-color);
 
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
+  
+  /* Icon sizing */
+  --icon-size-xs: 0.75rem;    /* 12px */
+  --icon-size-sm: 0.875rem;   /* 14px */
+  --icon-size-base: 1rem;     /* 16px */
+  --icon-size-lg: 1.125rem;   /* 18px */
+  --icon-size-xl: 1.25rem;    /* 20px */
+  --icon-size-2xl: 1.5rem;    /* 24px */
+  --icon-size-3xl: 1.875rem;  /* 30px */
+  --icon-size-4xl: 2.25rem;   /* 36px */
+  
+  /* Dark mode variables */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f4;
+  --text-primary: #1a1a1a;
+  --text-secondary: #5f6368;
+  --text-tertiary: #80868b;
+  --border-color: #dadce0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode */
+[data-theme="dark"],
+.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3c3c3c;
+  --text-primary: #ffffff;
+  --text-secondary: #e8eaed;
+  --text-tertiary: #9aa0a6;
+  --border-color: #5f6368;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  
+  /* Dark mode specific colors */
+  --color-grey: #2d2d2d;
+  --color-light-grey: #3c3c3c;
+  --bg-gray: rgba(255, 255, 255, 0.1);
+}
+
+/* Icon sizing utilities */
+.icon-xs { font-size: var(--icon-size-xs) !important; }
+.icon-sm { font-size: var(--icon-size-sm) !important; }
+.icon-base { font-size: var(--icon-size-base) !important; }
+.icon-lg { font-size: var(--icon-size-lg) !important; }
+.icon-xl { font-size: var(--icon-size-xl) !important; }
+.icon-2xl { font-size: var(--icon-size-2xl) !important; }
+.icon-3xl { font-size: var(--icon-size-3xl) !important; }
+.icon-4xl { font-size: var(--icon-size-4xl) !important; }
+
+/* Default icon size for all sicon classes */
+[class*="sicon-"] {
+  font-size: var(--icon-size-base);
+  line-height: 1;
 }

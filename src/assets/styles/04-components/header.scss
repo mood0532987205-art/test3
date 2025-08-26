@@ -194,3 +194,39 @@ salla-user-menu{
     @apply z-10;
   }
 }
+
+/* Dark mode styles for header */
+[data-theme="dark"] .store-header,
+.dark .store-header {
+  .top-navbar {
+    background-color: var(--bg-secondary);
+    border-bottom-color: var(--border-color);
+  }
+  
+  .main-nav-container {
+    background-color: var(--bg-primary) !important;
+    border-bottom-color: var(--border-color);
+  }
+  
+  .btn--rounded-gray {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    
+    &:hover {
+      background-color: var(--bg-secondary);
+    }
+  }
+  
+  .header-btn {
+    color: var(--text-primary);
+    
+    &:hover {
+      background-color: var(--bg-secondary);
+    }
+  }
+  
+  .navbar-brand img {
+    filter: brightness(0) invert(1);
+  }
+}
