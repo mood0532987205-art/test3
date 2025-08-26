@@ -1,0 +1,153 @@
+{#
+| Variable                       | Type     | Description                                                                  |
+|--------------------------------|----------|------------------------------------------------------------------------------|
+| component                      | object   | Contains merchant settings for fields from twilight.json `component` section |
+| component.slides[].image       | string   | Image url                                                                    |
+| component.slides[].title       | ?string  |                                                                              |
+| component.slides[].description | ?string  |                                                                              |
+| component.slides               | object[] | list of slides                                                               |
+| position                       | int      | Sorting number start from zero                                               |
+#}
+<section class="s-block s-block--hero-slider s-block--full-bg wide-placeholder overflow-hidden"> 
+    <salla-slider 
+      id="main-slider-{{ position }}"
+      auto-play
+      auto-play-delay="5000"
+      slider-config='{
+        "lazy": false,
+        "effect": "fade",
+        "parallax": true,
+        "speed": 1000,
+        "pagination": {
+          "clickable": true,
+          "dynamicBullets": true
+        },
+        "navigation": {
+          "nextEl": ".swiper-button-next-{{ position }}",
+          "prevEl": ".swiper-button-prev-{{ position }}"
+        }
+      }'
+      type="fullwidth">
+        <div slot="items">
+            {% for slide in component.slides %}
+                <div class="swiper-slide relative w-full min-h-[400px] lg:min-h-[600px] xl:min-h-[700px] bg-gray-900 overflow-hidden group">
+                    {# Enhanced background with overlay gradient #}
+                    <div 
+                        style="background-image: url({{ slide.image }});" 
+                        class="absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-[5000ms] ease-out group-hover:scale-105"
+                        data-swiper-parallax="-300">
+                    </div>
+                    
+                    {# Modern gradient overlay for better text readability #}
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    
+                    {# Enhanced content area with glass morphism effect #}
+                    <div class="relative h-full flex items-center container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="max-w-3xl text-white space-y-6 sm:space-y-8">
+                            
+                            {# Modern badge/pill indicator #}
+                            <div 
+                                data-swiper-parallax="-100" 
+                                class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium text-white/90 animate-fadeInUp">
+                                <span class="w-2 h-2 bg-primary-400 rounded-full mr-2 animate-pulse"></span>
+                                منتجات مميزة
+                            </div>
+                            
+                            {# Enhanced title with modern typography #}
+                            {% if slide.title %}
+                                <h1 
+                                    data-swiper-parallax="-200" 
+                                    class="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight animate-fadeInUp" 
+                                    style="animation-delay: 0.2s;">
+                                    <span class="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
+                                        {{ slide.title }}
+                                    </span>
+                                </h1>
+                            {% endif %}
+                            
+                            {# Enhanced description with better spacing #}
+                            {% if slide.description %}
+                                <p 
+                                    data-swiper-parallax="-150" 
+                                    class="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl font-light animate-fadeInUp"
+                                    style="animation-delay: 0.4s;">
+                                    {{ slide.description }}
+                                </p>
+                            {% endif %}
+                            
+                            {# Modern CTA buttons #}
+                            <div 
+                                data-swiper-parallax="-100" 
+                                class="flex flex-col sm:flex-row gap-4 pt-4 animate-fadeInUp"
+                                style="animation-delay: 0.6s;">
+                                <a href="#products" 
+                                   class="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-primary-500/25">
+                                    تسوق الآن
+                                    <svg class="w-5 h-5 mr-3 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <a href="#about" 
+                                   class="group inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-white/20 hover:border-white/30">
+                                    اعرف المزيد
+                                    <svg class="w-5 h-5 mr-3 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {# Decorative geometric elements #}
+                    <div class="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-primary-400/20 to-secondary-400/20 rounded-full blur-xl animate-pulse-slow opacity-0 lg:opacity-100"></div>
+                    <div class="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-r from-secondary-400/20 to-primary-400/20 rounded-full blur-xl animate-pulse-slow opacity-0 lg:opacity-100" style="animation-delay: 1s;"></div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        {# Enhanced navigation buttons with modern design #}
+        <div class="swiper-button-prev-{{ position }} absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:scale-110 cursor-pointer group">
+            <svg class="w-6 h-6 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </div>
+        <div class="swiper-button-next-{{ position }} absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:scale-110 cursor-pointer group">
+            <svg class="w-6 h-6 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </div>
+        
+        {# Enhanced pagination with modern styling #}
+        <div class="swiper-pagination-{{ position }} absolute bottom-8 left-1/2 -translate-x-1/2 z-10"></div>
+    </salla-slider>
+    
+    {# CSS for enhanced slider styling #}
+    <style>
+        .swiper-pagination-bullet {
+            @apply w-3 h-3 bg-white/30 rounded-full transition-all duration-300;
+        }
+        .swiper-pagination-bullet-active {
+            @apply bg-white scale-125;
+        }
+        .swiper-pagination-bullet-dynamic {
+            @apply transition-all duration-300;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+    </style>
+</section> 
