@@ -43,8 +43,8 @@ importers:
         specifier: ^2.14.199
         version: 2.14.199(@jitsu/protocols@1.10.0)(@types/dlv@1.1.5)(webpack@5.99.9)
       '@salla.sa/twilight-tailwind-theme':
-        specifier: ^2.14.199
-        version: 2.14.199
+        specifier: ^2.14.201
+        version: 2.14.201
       '@tailwindcss/forms':
         specifier: ^0.5.2
         version: 0.5.10(tailwindcss@3.4.17)
@@ -1013,6 +1013,9 @@ packages:
 
   '@salla.sa/twilight-tailwind-theme@2.14.199':
     resolution: {integrity: sha512-5u+7DAc3eBL8hDsNA7EthwY+wziqNiKMuFb7LvBMYpgQG4xCouds3ZA/3/CjDIi68p0YKYS38BzR2y64ulFioQ==}
+
+  '@salla.sa/twilight-tailwind-theme@2.14.201':
+    resolution: {integrity: sha512-fSCzyOnMMERUjitkorFa7VdSO5hj8fkHCAU32LLZajrKmmrPbKAi9sO4wYpe4sjezgFTU3EXjWafWSBFuky5Bw==}
 
   '@salla.sa/twilight@2.14.199':
     resolution: {integrity: sha512-k0RSt29ia1WUNtTrE400jaE94T3btjr2DCKdIx94vxPtk2ocpchCSJ5FJN1bHhlpGg+nbsGHpMK2+tp7SRFt8A==}
@@ -3780,6 +3783,8 @@ snapshots:
       - webpack
 
   '@salla.sa/twilight-tailwind-theme@2.14.199': {}
+
+  '@salla.sa/twilight-tailwind-theme@2.14.201': {}
 
   '@salla.sa/twilight@2.14.199(@jitsu/protocols@1.10.0)(@types/dlv@1.1.5)(webpack@5.99.9)':
     dependencies:
