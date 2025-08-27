@@ -15,8 +15,8 @@ importers:
         specifier: ^3.2.1
         version: 3.2.2
       fslightbox:
-        specifier: ^3.7.3
-        version: 3.7.3
+        specifier: ^3.7.4
+        version: 3.7.4
       lite-youtube-embed:
         specifier: ^0.2.0
         version: 0.2.0
@@ -1669,8 +1669,8 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  fslightbox@3.7.3:
-    resolution: {integrity: sha512-WrZ8uTLPUITnz1gzjiNlOmex8oludB9eVpt2K0f5dtkaSsStCapv5NKMxP8hfw2xjLbVKNfqpmE9wRXdqixVFg==}
+  fslightbox@3.7.4:
+    resolution: {integrity: sha512-zQqMHxiYkR0W/xrWQlchoO626C5KCM6rabpMWiJsy+MZCMHo7zlywsGAOGeOahRUqBZzXT9OeMddiVSfW77gaA==}
 
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
@@ -4446,7 +4446,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fslightbox@3.7.3: {}
+  fslightbox@3.7.4: {}
 
   function-bind@1.1.2: {}
 
