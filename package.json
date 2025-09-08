@@ -21,7 +21,7 @@
   },
   "author": "Salla - Modern Theme by Master Elite Website Builder",
   "dependencies": {
-    "@babel/runtime": "^7.26.10",
+    "@babel/runtime": "^7.28.4",
     "animejs": "^3.2.2",
     "fslightbox": "^3.7.3",
     "lite-youtube-embed": "^0.3.0",
